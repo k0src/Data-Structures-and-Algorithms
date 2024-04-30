@@ -197,5 +197,6 @@ int LinkedList::kthFromEnd(int k) {
 int LinkedList::middle() {
     if (isEmpty())
         throw std::invalid_argument("Cannot get middle of an empty list.");
-
+    Node* p1 = first;
+    Node* p2 = last;
 }
