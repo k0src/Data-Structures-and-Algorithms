@@ -18,6 +18,7 @@ public:
     void reverse();
     int kthFromEnd(int k);
     int middle();
+    void insertAt(int index, int item);
 private:
     // Head and tail
     Node* first;

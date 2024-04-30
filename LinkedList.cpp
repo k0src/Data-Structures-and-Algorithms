@@ -45,6 +45,33 @@ void LinkedList::addFirst(int item) {
     count++;
 }
 
+void LinkedList::insertAt(int index, int item) {
+    // Check if index is valid
+    if (index < 0 || index > count)
+        throw std::invalid_argument("Index out of bounds!");
+
+    // If index is 0 use addFirst
+    if (index == 0)
+        addFirst(item);
+    // If index is at the end, use addLast
+    else if (index == count)
+        addLast(item);
+    // Else, find the node at the previous index
+    else {
+        // Start from beginning of list
+        Node* current = first;
+        // Move current to the node just before the desired index
+        for (int i = 0; i < index - 2; i++)
+            current = current->next;
+        // Create new node with the item
+        Node* node = new Node(item);
+        // Insert the nde between current and current->next
+        node->next = current->next;
+        current->next = node;
+        count++;
+    }
+}
+
 bool LinkedList::isEmpty() {
     return (first == nullptr);
 }

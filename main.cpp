@@ -18,12 +18,11 @@ int main()
     l.addLast(30);
     l.addLast(40);
     l.addLast(50);
-
-    // two pointers that are k-1 nodes apart.
-
-//    for (int i = 0; i < 4; i++) {
-//        cout << l.toArray()[i] << endl;
-//    }
+    l.insertAt(1, 99);
+    
+    for (int i = 0; i < 4; i++) {
+        cout << l.toArray()[i] << endl;
+    }
 
     cout << l.middle();
 }
