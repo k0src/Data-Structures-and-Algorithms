@@ -198,5 +198,11 @@ int LinkedList::middle() {
     if (isEmpty())
         throw std::invalid_argument("Cannot get middle of an empty list.");
     Node* p1 = first;
-    Node* p2 = last;
+    Node* p2 = first;
+
+    while (p1 != nullptr && p1->next != nullptr) {
+        p1 = p1->next->next;
+        p2 = p2->next;
+    }
+    return p2->value;
 }

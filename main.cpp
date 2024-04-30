@@ -25,5 +25,5 @@ int main()
 //        cout << l.toArray()[i] << endl;
 //    }
 
-    cout << l.kthFromEnd(10); //30
+    cout << l.middle();
 }
