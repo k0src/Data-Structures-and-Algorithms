@@ -7,12 +7,14 @@
 #include "LinkedList.h"
 #include <stack>
 #include "StringReverser.h"
+#include <unordered_map>
+#include "ExpressionChecker.h"
 
 using namespace std;
 
 int main()
 {
-    string str = "A string to be reversed";
-    StringReverser sr;
-    cout << sr.reverse();
+    string str = "(<>}";
+    ExpressionChecker exp;
+    cout << boolalpha << exp.isBalanced(str);
 }
