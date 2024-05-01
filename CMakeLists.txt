@@ -9,4 +9,6 @@ add_executable(StructuresAlgos main.cpp
         LinkedList.cpp
         LinkedList.h
         Node.cpp
-        Node.h)
+        Node.h
+        StringReverser.cpp
+        StringReverser.h)
