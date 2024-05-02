@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    string str = "(<>}";
+    string str = "(<>)";
     ExpressionChecker exp;
     cout << boolalpha << exp.isBalanced(str);
 }
