@@ -9,12 +9,16 @@
 #include "StringReverser.h"
 #include <unordered_map>
 #include "ExpressionChecker.h"
+#include "Stack.h"
 
 using namespace std;
 
 int main()
 {
-    string str = "(<>)";
-    ExpressionChecker exp;
-    cout << boolalpha << exp.isBalanced(str);
+    Stack stack;
+    stack.push(10);
+    stack.push(20);
+    stack.push(1);
+    stack.pop();
+    cout << stack.min();
 }

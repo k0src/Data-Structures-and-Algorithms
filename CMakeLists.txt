@@ -13,4 +13,6 @@ add_executable(StructuresAlgos main.cpp
         StringReverser.cpp
         StringReverser.h
         ExpressionChecker.cpp
-        ExpressionChecker.h)
+        ExpressionChecker.h
+        Stack.cpp
+        Stack.h)
