@@ -13,7 +13,6 @@
 #include <queue>
 #include "ArrayQueue.h"
 
-
 using namespace std;
 
 // Reversing a queue with a stack
