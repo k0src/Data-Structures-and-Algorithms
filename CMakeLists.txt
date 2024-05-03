@@ -15,4 +15,6 @@ add_executable(StructuresAlgos main.cpp
         ExpressionChecker.cpp
         ExpressionChecker.h
         Stack.cpp
-        Stack.h)
+        Stack.h
+        ArrayQueue.cpp
+        ArrayQueue.h)

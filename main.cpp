@@ -10,15 +10,37 @@
 #include <unordered_map>
 #include "ExpressionChecker.h"
 #include "Stack.h"
+#include <queue>
+#include "ArrayQueue.h"
+
 
 using namespace std;
 
+// Reversing a queue with a stack
+void reverse(queue<int>& q) {
+    stack<int> s;
+
+    while (!q.empty()) {
+        s.push(q.front());
+        q.pop();
+    }
+
+    while (!s.empty()) {
+        q.push(s.top());
+        s.pop();
+    }
+}
+
 int main()
 {
-    Stack stack;
-    stack.push(10);
-    stack.push(20);
-    stack.push(1);
-    stack.pop();
-    cout << stack.min();
+    ArrayQueue aq(5);
+    aq.enqueue(10);
+    aq.enqueue(20);
+    aq.enqueue(30);
+    aq.dequeue();
+    aq.dequeue();
+    aq.enqueue(10);
+    aq.enqueue(20);
+    aq.enqueue(30);
+    cout << aq;
 }
