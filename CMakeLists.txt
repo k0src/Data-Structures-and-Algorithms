@@ -21,4 +21,6 @@ add_executable(StructuresAlgos main.cpp
         QueueReverser.cpp
         QueueReverser.h
         StackQueue.cpp
-        StackQueue.h)
+        StackQueue.h
+        PriorityQueue.cpp
+        PriorityQueue.h)

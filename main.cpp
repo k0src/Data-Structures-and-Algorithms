@@ -14,10 +14,19 @@
 #include "ArrayQueue.h"
 #include "QueueReverser.h"
 #include "StackQueue.h"
+#include "PriorityQueue.h"
 
 using namespace std;
 
 int main()
 {
-
+    PriorityQueue priorityQueue(5);
+    priorityQueue.add(10);
+    priorityQueue.add(30);
+    priorityQueue.add(20);
+    priorityQueue.add(50);
+    priorityQueue.add(50);
+    priorityQueue.add(70);
+    priorityQueue.add(6);
+    cout << priorityQueue;
 }
