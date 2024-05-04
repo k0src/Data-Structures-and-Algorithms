@@ -11,7 +11,7 @@ public:
     int size() const;
     int* toArray() const;
     bool isEmpty() const;
-private:
+    void reverse(int k);
     int* array;
     int length;
     int count = 0;

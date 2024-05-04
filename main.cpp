@@ -24,9 +24,9 @@ int main()
     priorityQueue.add(10);
     priorityQueue.add(30);
     priorityQueue.add(20);
-    priorityQueue.add(50);
-    priorityQueue.add(50);
-    priorityQueue.add(70);
-    priorityQueue.add(6);
+    priorityQueue.add(40);
+    priorityQueue.add(5);
+    priorityQueue.reverse(3);
+
     cout << priorityQueue;
 }

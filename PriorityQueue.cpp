@@ -1,5 +1,6 @@
 #include "PriorityQueue.h"
 #include <stdexcept>
+#include <stack>
 
 PriorityQueue::PriorityQueue(int length) {
     this->length = length;
@@ -44,6 +45,20 @@ int PriorityQueue::remove() {
         throw std::invalid_argument("Queue is empty!");
     }
     return array[--count];
+}
+#include <iostream>
+void PriorityQueue::reverse(int k) {
+    if (k > count) {
+        throw std::invalid_argument("Input too large!");
+    }
+    std::stack<int> s;
+    for (int i = 0; i < k; i++) {
+        s.push(array[i]);
+    }
+    for (int i = 0; i < k; i++) {
+        array[i] = s.top();
+        s.pop();
+    }
 }
 
 int* PriorityQueue::toArray() const {
