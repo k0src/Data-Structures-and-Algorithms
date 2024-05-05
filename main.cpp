@@ -15,18 +15,16 @@
 #include "QueueReverser.h"
 #include "StackQueue.h"
 #include "PriorityQueue.h"
+#include "QueueStack.h"
 
 using namespace std;
 
 int main()
 {
-    PriorityQueue priorityQueue(5);
-    priorityQueue.add(10);
-    priorityQueue.add(30);
-    priorityQueue.add(20);
-    priorityQueue.add(40);
-    priorityQueue.add(5);
-    priorityQueue.reverse(3);
-
-    cout << priorityQueue;
+    QueueStack queueStack;
+    queueStack.push(10);
+    queueStack.push(20);
+    queueStack.push(30);
+    queueStack.push(40);
+    cout << queueStack.pop();
 }
