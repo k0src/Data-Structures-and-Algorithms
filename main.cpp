@@ -16,15 +16,32 @@
 #include "StackQueue.h"
 #include "PriorityQueue.h"
 #include "QueueStack.h"
+#include <unordered_map>
 
 using namespace std;
 
+char firstNonRepeatedCharacter(string& str) {
+    unordered_map<char, int> map;
+
+    for (char& c: str) {
+        if (map.find(c) == map.end()) {
+            map[c] = 1;
+        }
+        else {
+            map[c] = map[c] + 1;
+        }
+    }
+
+    for (char& c: str) {
+        if (map[c] == 1) {
+            return c;
+        }
+    }
+    return -1;
+}
+
 int main()
 {
-    QueueStack queueStack;
-    queueStack.push(10);
-    queueStack.push(20);
-    queueStack.push(30);
-    queueStack.push(40);
-    cout << queueStack.pop();
+    string s = "a green apple";
+    cout << firstNonRepeatedCharacter(s);
 }
