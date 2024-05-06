@@ -25,4 +25,8 @@ add_executable(StructuresAlgos main.cpp
         PriorityQueue.cpp
         PriorityQueue.h
         QueueStack.cpp
-        QueueStack.h)
+        QueueStack.h
+        HashMap.cpp
+        HashMap.h
+        KeyValue.cpp
+        KeyValue.h)

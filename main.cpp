@@ -17,31 +17,18 @@
 #include "PriorityQueue.h"
 #include "QueueStack.h"
 #include <unordered_map>
+#include "HashMap.h"
+#include <string>
 
 using namespace std;
 
-char firstNonRepeatedCharacter(string& str) {
-    unordered_map<char, int> map;
-
-    for (char& c: str) {
-        if (map.find(c) == map.end()) {
-            map[c] = 1;
-        }
-        else {
-            map[c] = map[c] + 1;
-        }
-    }
-
-    for (char& c: str) {
-        if (map[c] == 1) {
-            return c;
-        }
-    }
-    return -1;
-}
 
 int main()
 {
-    string s = "a green apple";
-    cout << firstNonRepeatedCharacter(s);
+    HashMap hashMap;
+    hashMap.put(6, "Six");
+    hashMap.put(8, "Eight");
+    hashMap.put(11, "Eleven");
+    cout << hashMap.get(6);
+    hashMap.remove(6);
 }
