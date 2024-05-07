@@ -33,4 +33,6 @@ int main()
     tree.add(6);
     tree.add(8);
     tree.add(10);
+
+    cout << boolalpha << tree.has(88);
 }
