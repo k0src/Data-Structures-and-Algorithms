@@ -19,16 +19,18 @@
 #include <unordered_map>
 #include "HashMap.h"
 #include <string>
+#include "Tree.h"
 
 using namespace std;
 
-
 int main()
 {
-    HashMap hashMap;
-    hashMap.put(6, "Six");
-    hashMap.put(8, "Eight");
-    hashMap.put(11, "Eleven");
-    cout << hashMap.get(6);
-    hashMap.remove(6);
+    Tree tree;
+    tree.add(7);
+    tree.add(4);
+    tree.add(9);
+    tree.add(1);
+    tree.add(6);
+    tree.add(8);
+    tree.add(10);
 }

@@ -29,4 +29,8 @@ add_executable(StructuresAlgos main.cpp
         HashMap.cpp
         HashMap.h
         KeyValue.cpp
-        KeyValue.h)
+        KeyValue.h
+        Tree.cpp
+        Tree.h
+        TreeNode.cpp
+        TreeNode.h)
