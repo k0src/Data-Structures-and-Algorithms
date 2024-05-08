@@ -33,5 +33,17 @@ int main()
     tree.add(6);
     tree.add(8);
     tree.add(10);
-    cout << tree.height();
+
+    Tree tree2;
+    tree2.add(7);
+    tree2.add(4);
+    tree2.add(9);
+    tree2.add(1);
+    tree2.add(6);
+    tree2.add(8);
+    tree2.add(10);
+
+    Tree* other = &tree2;
+
+    cout << boolalpha << tree.equals(other);
 }

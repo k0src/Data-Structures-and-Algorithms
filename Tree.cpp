@@ -143,3 +143,23 @@ int Tree::min(TreeNode* rootNode) {
     // Compare with root, return min value of the 3
     return std::min(std::min(left, right), rootNode->value);
 }
+
+// check equality using pre-order traversal
+bool Tree::equals(Tree* other) {
+    if (other == nullptr) {
+        return false;
+    }
+
+    return equals(root, other->root);
+}
+
+bool Tree::equals(TreeNode *first, TreeNode *second) {
+    if (first == nullptr && second == nullptr)
+        return true;
+    if (first != nullptr && second != nullptr)
+        return first->value == second->value
+                && equals(first->leftChild, second->leftChild)
+                && equals(first->rightChild, second->rightChild);
+
+    return false;
+}

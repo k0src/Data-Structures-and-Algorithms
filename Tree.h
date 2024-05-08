@@ -16,6 +16,8 @@ public:
 
     int min();
     int height();
+
+    bool equals(Tree* other);
 private:
     TreeNode* root = nullptr;
     // Traversal methods
@@ -25,6 +27,8 @@ private:
 
     int min(TreeNode* rootNode);
     int height(TreeNode* rootNode);
+
+    bool equals(TreeNode* first, TreeNode* second);
 };
 
 
