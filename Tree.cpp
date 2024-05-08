@@ -107,7 +107,7 @@ void Tree::traversePostOrder(TreeNode* rootNode) {
 }
 
 int Tree::height() {
-    height(root);
+    return height(root);
 }
 
 // Finding height value using post order traversal
@@ -127,7 +127,7 @@ int Tree::height(TreeNode* rootNode) {
 
 // Finding min value using post order traversal
 int Tree::min() {
-    min(root);
+    return min(root);
 }
 
 int Tree::min(TreeNode* rootNode) {
