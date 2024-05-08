@@ -45,5 +45,6 @@ int main()
 
     Tree* other = &tree2;
 
-    cout << boolalpha << tree.equals(other);
+    cout << boolalpha << tree.equals(other) << '\n' << tree.min();
+    return 0;
 }
