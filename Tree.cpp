@@ -1,4 +1,6 @@
 #include "Tree.h"
+#include <iostream>
+#include <cmath>
 
 Tree::Tree() {
 }
@@ -58,4 +60,86 @@ bool Tree::has(int item) {
         }
     }
     return false;
+}
+
+// Overloaded w/ no parameter as a public method
+void Tree::traversePreOrder() {
+    traversePreOrder(root);
+}
+
+// Pre order traversal
+void Tree::traversePreOrder(TreeNode* rootNode) {
+    // Base case
+    if (rootNode == nullptr)
+        return;
+    // Root -> Left -> Right
+    std::cout << rootNode->value << std::endl;
+    traversePreOrder(rootNode->leftChild);
+    traversePreOrder(rootNode->rightChild);
+}
+
+void Tree::traverseInOrder() {
+    traverseInOrder(root);
+}
+
+// In order traversal
+void Tree::traverseInOrder(TreeNode* rootNode) {
+    if (rootNode == nullptr)
+        return;
+
+    traverseInOrder(rootNode->leftChild);
+    std::cout << rootNode->value << std::endl;
+    traverseInOrder(rootNode->rightChild);
+}
+
+void Tree::traversePostOrder() {
+    traversePostOrder(root);
+}
+
+// Post order traversal
+void Tree::traversePostOrder(TreeNode* rootNode) {
+    if (rootNode == nullptr)
+        return;
+
+    traversePostOrder(rootNode->leftChild);
+    traversePostOrder(rootNode->rightChild);
+    std::cout << rootNode->value << std::endl;
+}
+
+int Tree::height() {
+    height(root);
+}
+
+// Finding height value using post order traversal
+int Tree::height(TreeNode* rootNode) {
+    if (root == nullptr)
+        return -1;
+    // Base case
+    if ((rootNode->leftChild == nullptr) && (rootNode->rightChild == nullptr))
+        return 0;
+
+    // Calculate heights of left and right
+    int left = height(rootNode->leftChild);
+    int right = height(rootNode->rightChild);
+
+    return (1 + std::max(left, right));
+}
+
+// Finding min value using post order traversal
+int Tree::min() {
+    min(root);
+}
+
+int Tree::min(TreeNode* rootNode) {
+    if (root == nullptr)
+        return -1;
+    // Base case
+    if ((rootNode->leftChild == nullptr) && (rootNode->rightChild == nullptr))
+        return rootNode->value;
+    // Find min in left subtree
+    int left = min(rootNode->leftChild);
+    // Find min in right subtree
+    int right = min(rootNode->rightChild);
+    // Compare with root, return min value of the 3
+    return std::min(std::min(left, right), rootNode->value);
 }
