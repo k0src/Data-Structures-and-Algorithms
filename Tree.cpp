@@ -253,3 +253,18 @@ int Tree::countLeaves(TreeNode *node) {
 
     return leftCount + rightCount;
 }
+
+bool Tree::contains(int item) {
+    return contains(root, item);
+}
+
+bool Tree::contains(TreeNode *node, int item) {
+    if (node == nullptr)
+        return false;
+
+    if (node->value == item)
+        return true;
+
+    return contains(node->leftChild, item) ||
+           contains(node->rightChild, item);
+}

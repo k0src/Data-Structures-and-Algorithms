@@ -29,6 +29,7 @@ public:
 
     int size();
     int countLeaves();
+    bool contains(int item);
 private:
     TreeNode* root = nullptr;
     // Traversal methods
@@ -50,6 +51,7 @@ private:
 
     int size(TreeNode* node);
     int countLeaves(TreeNode* node);
+    bool contains(TreeNode* node, int item);
 };
 
 

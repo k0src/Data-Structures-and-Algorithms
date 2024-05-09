@@ -34,6 +34,6 @@ int main()
     tree.add(8);
     tree.add(10);
 
-    cout << tree.size();
+    cout << boolalpha << tree.contains(6);
     return 0;
 }
