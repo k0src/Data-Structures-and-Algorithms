@@ -2,6 +2,7 @@
 #define STRUCTURESALGOS_TREE_H
 
 #include "TreeNode.h"
+#include <vector>
 
 class Tree {
 public:
@@ -20,6 +21,10 @@ public:
     bool equals(Tree* other);
 
     bool validate();
+
+    void printNodesAtDistance(int k);
+    std::vector<int> nodesAtDistance(int k);
+
 private:
     TreeNode* root = nullptr;
     // Traversal methods
@@ -33,6 +38,9 @@ private:
     bool equals(TreeNode* first, TreeNode* second);
 
     bool validate(TreeNode* node, int min, int max);
+
+    void printNodesAtDistance(TreeNode* node, int k);
+    void nodesAtDistance(TreeNode* node, int k, std::vector<int>& list);
 };
 
 

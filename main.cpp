@@ -34,8 +34,10 @@ int main()
     tree.add(8);
     tree.add(10);
 
+    auto nodes = tree.nodesAtDistance(2);
 
-    cout << boolalpha << tree.validate();
+    for (auto n: nodes)
+        cout << n << '\n';
 
     return 0;
 }

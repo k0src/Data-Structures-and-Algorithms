@@ -179,3 +179,35 @@ bool Tree::validate(TreeNode* node, int min, int max) {
     return validate(node->leftChild, min, node->value - 1) &&
            validate(node->rightChild, node->value + 1, max);
 }
+
+void Tree::printNodesAtDistance(int k) {
+    printNodesAtDistance(root, k);
+}
+
+void Tree::printNodesAtDistance(TreeNode *node, int k) {
+    if (node == nullptr)
+        return;
+
+    if (k == 0)
+        std::cout << node->value << '\n';
+
+    printNodesAtDistance(node->leftChild, k - 1);
+    printNodesAtDistance(node->rightChild, k - 1);
+}
+
+std::vector<int> Tree::nodesAtDistance(int k) {
+    std::vector<int> list;
+    nodesAtDistance(root, k, list);
+    return list;
+}
+
+void Tree::nodesAtDistance(TreeNode *node, int k, std::vector<int>& list) {
+    if (node == nullptr)
+        return;
+
+    if (k == 0)
+        list.push_back(node->value);
+
+    nodesAtDistance(node->leftChild, k - 1, list);
+    nodesAtDistance(node->rightChild, k - 1, list);
+}
