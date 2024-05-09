@@ -1,6 +1,7 @@
 #include "Tree.h"
 #include <iostream>
 #include <cmath>
+#include <limits>
 
 Tree::Tree() {
 }
@@ -68,14 +69,14 @@ void Tree::traversePreOrder() {
 }
 
 // Pre order traversal
-void Tree::traversePreOrder(TreeNode* rootNode) {
+void Tree::traversePreOrder(TreeNode* node) {
     // Base case
-    if (rootNode == nullptr)
+    if (node == nullptr)
         return;
     // Root -> Left -> Right
-    std::cout << rootNode->value << std::endl;
-    traversePreOrder(rootNode->leftChild);
-    traversePreOrder(rootNode->rightChild);
+    std::cout << node->value << std::endl;
+    traversePreOrder(node->leftChild);
+    traversePreOrder(node->rightChild);
 }
 
 void Tree::traverseInOrder() {
@@ -83,13 +84,13 @@ void Tree::traverseInOrder() {
 }
 
 // In order traversal
-void Tree::traverseInOrder(TreeNode* rootNode) {
-    if (rootNode == nullptr)
+void Tree::traverseInOrder(TreeNode* node) {
+    if (node == nullptr)
         return;
 
-    traverseInOrder(rootNode->leftChild);
-    std::cout << rootNode->value << std::endl;
-    traverseInOrder(rootNode->rightChild);
+    traverseInOrder(node->leftChild);
+    std::cout << node->value << std::endl;
+    traverseInOrder(node->rightChild);
 }
 
 void Tree::traversePostOrder() {
@@ -97,13 +98,13 @@ void Tree::traversePostOrder() {
 }
 
 // Post order traversal
-void Tree::traversePostOrder(TreeNode* rootNode) {
-    if (rootNode == nullptr)
+void Tree::traversePostOrder(TreeNode* node) {
+    if (node == nullptr)
         return;
 
-    traversePostOrder(rootNode->leftChild);
-    traversePostOrder(rootNode->rightChild);
-    std::cout << rootNode->value << std::endl;
+    traversePostOrder(node->leftChild);
+    traversePostOrder(node->rightChild);
+    std::cout << node->value << std::endl;
 }
 
 int Tree::height() {
@@ -111,16 +112,16 @@ int Tree::height() {
 }
 
 // Finding height value using post order traversal
-int Tree::height(TreeNode* rootNode) {
+int Tree::height(TreeNode* node) {
     if (root == nullptr)
         return -1;
     // Base case
-    if ((rootNode->leftChild == nullptr) && (rootNode->rightChild == nullptr))
+    if ((node->leftChild == nullptr) && (node->rightChild == nullptr))
         return 0;
 
     // Calculate heights of left and right
-    int left = height(rootNode->leftChild);
-    int right = height(rootNode->rightChild);
+    int left = height(node->leftChild);
+    int right = height(node->rightChild);
 
     return (1 + std::max(left, right));
 }
@@ -130,18 +131,18 @@ int Tree::min() {
     return min(root);
 }
 
-int Tree::min(TreeNode* rootNode) {
+int Tree::min(TreeNode* node) {
     if (root == nullptr)
         return -1;
     // Base case
-    if ((rootNode->leftChild == nullptr) && (rootNode->rightChild == nullptr))
-        return rootNode->value;
+    if ((node->leftChild == nullptr) && (node->rightChild == nullptr))
+        return node->value;
     // Find min in left subtree
-    int left = min(rootNode->leftChild);
+    int left = min(node->leftChild);
     // Find min in right subtree
-    int right = min(rootNode->rightChild);
+    int right = min(node->rightChild);
     // Compare with root, return min value of the 3
-    return std::min(std::min(left, right), rootNode->value);
+    return std::min(std::min(left, right), node->value);
 }
 
 // check equality using pre-order traversal
@@ -162,4 +163,19 @@ bool Tree::equals(TreeNode *first, TreeNode *second) {
                 && equals(first->rightChild, second->rightChild);
 
     return false;
+}
+
+bool Tree::validate() {
+    return validate(root, std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
+}
+
+bool Tree::validate(TreeNode* node, int min, int max) {
+    if (node == nullptr)
+        return true;
+
+    if (node->value > max || node->value < min)
+        return false;
+
+    return validate(node->leftChild, min, node->value - 1) &&
+           validate(node->rightChild, node->value + 1, max);
 }
