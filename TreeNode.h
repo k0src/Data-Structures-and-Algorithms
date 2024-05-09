@@ -5,7 +5,6 @@
 class TreeNode {
 public:
     TreeNode(int value);
-    ~TreeNode();
 private:
     TreeNode* leftChild;
     TreeNode* rightChild;

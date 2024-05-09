@@ -5,7 +5,3 @@ TreeNode::TreeNode(int value) {
     this->leftChild = nullptr;
     this->rightChild = nullptr;
 }
-
-TreeNode::~TreeNode() {
-
-}

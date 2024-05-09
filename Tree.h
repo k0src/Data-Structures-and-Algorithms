@@ -25,6 +25,7 @@ public:
     void printNodesAtDistance(int k);
     std::vector<int> nodesAtDistance(int k);
 
+    void traverseLevelOrder();
 private:
     TreeNode* root = nullptr;
     // Traversal methods
@@ -41,6 +42,8 @@ private:
 
     void printNodesAtDistance(TreeNode* node, int k);
     void nodesAtDistance(TreeNode* node, int k, std::vector<int>& list);
+
+    void deleteTree(TreeNode* node);
 };
 
 

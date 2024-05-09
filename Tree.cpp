@@ -3,11 +3,20 @@
 #include <cmath>
 #include <limits>
 
-Tree::Tree() {
-}
+Tree::Tree() = default;
 
 Tree::~Tree() {
-    // delete all nodes
+    deleteTree(root);
+}
+
+void Tree::deleteTree(TreeNode* node) {
+    if (node == nullptr)
+        return;
+
+    deleteTree(node->leftChild);
+    deleteTree(node->rightChild);
+
+    delete node;
 }
 
 void Tree::add(int item) {
@@ -210,4 +219,11 @@ void Tree::nodesAtDistance(TreeNode *node, int k, std::vector<int>& list) {
 
     nodesAtDistance(node->leftChild, k - 1, list);
     nodesAtDistance(node->rightChild, k - 1, list);
+}
+
+void Tree::traverseLevelOrder() {
+    for (int i = 0; i <= height(root); i++) {
+        for (auto n: nodesAtDistance(i))
+            std::cout << n << '\n';
+    }
 }

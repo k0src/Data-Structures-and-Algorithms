@@ -34,10 +34,7 @@ int main()
     tree.add(8);
     tree.add(10);
 
-    auto nodes = tree.nodesAtDistance(2);
-
-    for (auto n: nodes)
-        cout << n << '\n';
+    tree.traverseLevelOrder();
 
     return 0;
 }
