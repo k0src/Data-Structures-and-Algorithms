@@ -227,3 +227,16 @@ void Tree::traverseLevelOrder() {
             std::cout << n << '\n';
     }
 }
+
+int Tree::size() {
+    return size(root, 0);
+}
+
+int Tree::size(TreeNode* node, int _size) {
+    if (node == nullptr)
+        return _size;
+    int left = size(node->leftChild, _size);
+    int right = size(node->rightChild, _size);
+
+    return left + right + 1;
+}

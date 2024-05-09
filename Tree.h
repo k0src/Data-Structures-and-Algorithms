@@ -26,6 +26,8 @@ public:
     std::vector<int> nodesAtDistance(int k);
 
     void traverseLevelOrder();
+
+    int size();
 private:
     TreeNode* root = nullptr;
     // Traversal methods
@@ -44,6 +46,8 @@ private:
     void nodesAtDistance(TreeNode* node, int k, std::vector<int>& list);
 
     void deleteTree(TreeNode* node);
+
+    int size(TreeNode* node, int _size);
 };
 
 

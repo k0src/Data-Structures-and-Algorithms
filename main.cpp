@@ -34,7 +34,6 @@ int main()
     tree.add(8);
     tree.add(10);
 
-    tree.traverseLevelOrder();
-
+    cout << tree.size();
     return 0;
 }
