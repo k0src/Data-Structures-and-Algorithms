@@ -28,6 +28,7 @@ public:
     void traverseLevelOrder();
 
     int size();
+    int countLeaves();
 private:
     TreeNode* root = nullptr;
     // Traversal methods
@@ -47,7 +48,8 @@ private:
 
     void deleteTree(TreeNode* node);
 
-    int size(TreeNode* node, int _size);
+    int size(TreeNode* node);
+    int countLeaves(TreeNode* node);
 };
 
 

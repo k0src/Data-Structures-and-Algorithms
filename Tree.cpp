@@ -229,14 +229,27 @@ void Tree::traverseLevelOrder() {
 }
 
 int Tree::size() {
-    return size(root, 0);
+    return size(root);
 }
 
-int Tree::size(TreeNode* node, int _size) {
+int Tree::size(TreeNode* node) {
     if (node == nullptr)
-        return _size;
-    int left = size(node->leftChild, _size);
-    int right = size(node->rightChild, _size);
+        return 0;
+    int left = size(node->leftChild);
+    int right = size(node->rightChild);
 
     return left + right + 1;
+}
+
+int Tree::countLeaves() {
+    return countLeaves(root);
+}
+
+int Tree::countLeaves(TreeNode *node) {
+    if (node->leftChild == nullptr && node->rightChild == nullptr)
+        return 1;
+    int leftCount = countLeaves(node->leftChild);
+    int rightCount = countLeaves(node->rightChild);
+
+    return leftCount + rightCount;
 }
