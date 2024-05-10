@@ -238,7 +238,7 @@ int Tree::size(TreeNode* node) {
     int left = size(node->leftChild);
     int right = size(node->rightChild);
 
-    return left + right + 1;
+    return left + right;
 }
 
 int Tree::countLeaves() {

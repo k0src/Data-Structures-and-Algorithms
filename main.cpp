@@ -20,20 +20,15 @@
 #include "HashMap.h"
 #include <string>
 #include "Tree.h"
+#include "AVLTree.h"
 
 using namespace std;
 
 int main()
 {
-    Tree tree;
-    tree.add(7);
-    tree.add(4);
-    tree.add(9);
-    tree.add(1);
-    tree.add(6);
-    tree.add(8);
-    tree.add(10);
-
-    cout << boolalpha << tree.contains(6);
+    AVLTree avlTree;
+    avlTree.insert(10);
+    avlTree.insert(20);
+    avlTree.insert(30);
     return 0;
 }
