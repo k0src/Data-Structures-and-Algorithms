@@ -8,6 +8,7 @@ private:
     AVLNode* leftChild;
     AVLNode* rightChild;
     int value;
+    int height = 0;
     friend class AVLTree;
 };
 

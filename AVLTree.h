@@ -12,6 +12,13 @@ public:
 private:
     AVLNode* root = nullptr;
     AVLNode* insert(int item, AVLNode* node);
+    int height(AVLNode* node);
+    bool isLeftHeavy(AVLNode* node);
+    bool isRightHeavy(AVLNode* node);
+    int balanceFactor(AVLNode* node);
+    AVLNode* balance(AVLNode* node);
+    AVLNode* rotateLeft(AVLNode* node);
+    AVLNode* rotateRight(AVLNode* node);
 };
 
 

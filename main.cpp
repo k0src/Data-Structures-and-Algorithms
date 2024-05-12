@@ -28,7 +28,7 @@ int main()
 {
     AVLTree avlTree;
     avlTree.insert(10);
-    avlTree.insert(20);
     avlTree.insert(30);
+    avlTree.insert(20);
     return 0;
 }
