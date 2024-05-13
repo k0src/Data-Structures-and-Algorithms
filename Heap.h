@@ -16,6 +16,14 @@ private:
     void swap(int first, int second);
     int parent(int index);
     void bubbleUp();
+    int leftChildIndex(int index);
+    int rightChildIndex(int index);
+    int leftChild(int index);
+    int rightChild(int index);
+    bool isValidParent(int index);
+    int largerChildIndex(int index);
+    bool hasLeftChild(int index);
+    bool hasRightChild(int index);
 
     int* array;
     int size = 0;

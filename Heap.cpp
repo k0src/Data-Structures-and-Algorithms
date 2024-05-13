@@ -46,5 +46,64 @@ bool Heap::isFull() {
 }
 
 void Heap::remove() {
+    if (isEmpty())
+        throw std::invalid_argument("Heap is empty");
+    // move last node to root
+    array[0] = array[--size];
 
+    // while root is less than children, bubble down
+    int index = 0;
+    while(index <= size && !isValidParent(index)) {
+        int lci = largerChildIndex(index);
+        swap(index, lci);
+        index = lci;
+    }
+
+}
+
+int Heap::leftChildIndex(int index) {
+    return index * 2 + 1;
+}
+
+int Heap::rightChildIndex(int index) {
+    return index * 2 + 2;
+}
+
+int Heap::leftChild(int index) {
+    return array[leftChildIndex(index)];
+}
+
+int Heap::rightChild(int index) {
+    return array[rightChildIndex(index)];
+}
+
+bool Heap::isValidParent(int index) {
+    if (!hasLeftChild(index))
+        return true;
+
+    bool isValid = array[index] >= leftChildIndex(index);
+
+    if (!hasRightChild(index))
+        isValid &= array[index] >= rightChildIndex(index);
+
+    return isValid;
+}
+
+int Heap::largerChildIndex(int index) {
+    if (!hasLeftChild(index))
+        return index;
+
+    if (!hasRightChild(index))
+        return leftChildIndex(index);
+
+    return (leftChild(index) > rightChild(index)) ?
+            leftChildIndex(index) : rightChildIndex(index);
+}
+
+bool Heap::hasLeftChild(int index) {
+    return leftChildIndex(index) <= size;
+}
+
+bool Heap::hasRightChild(int index) {
+    return rightChildIndex(index) <= size;
 }
