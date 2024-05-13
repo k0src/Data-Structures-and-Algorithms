@@ -21,14 +21,17 @@
 #include <string>
 #include "Tree.h"
 #include "AVLTree.h"
+#include "Heap.h"
 
 using namespace std;
 
 int main()
 {
-    AVLTree avlTree;
-    avlTree.insert(10);
-    avlTree.insert(30);
-    avlTree.insert(20);
+    Heap heap(10);
+    heap.insert(10);
+    heap.insert(5);
+    heap.insert(17);
+    heap.insert(4);
+    heap.insert(22);
     return 0;
 }

@@ -37,4 +37,6 @@ add_executable(StructuresAlgos main.cpp
         AVLTree.cpp
         AVLTree.h
         AVLNode.cpp
-        AVLNode.h)
+        AVLNode.h
+        Heap.cpp
+        Heap.h)
