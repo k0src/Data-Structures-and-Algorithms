@@ -27,12 +27,14 @@ using namespace std;
 
 int main()
 {
+    int nums[] = { 1, 5, 2, 7, 3, 4, 12, 9 };
     Heap heap(10);
-    heap.insert(10);
-    heap.insert(5);
-    heap.insert(17);
-    heap.insert(4);
-    heap.insert(22);
+
+    for (int n : nums)
+        heap.insert(n);
+
     heap.remove();
+
+
     return 0;
 }

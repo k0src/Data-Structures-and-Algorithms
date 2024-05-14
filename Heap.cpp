@@ -49,7 +49,7 @@ void Heap::remove() {
     if (isEmpty())
         throw std::invalid_argument("Heap is empty");
     // move last node to root
-    array[0] = array[--size];
+    array[0] = array[--size]; // decrement size after removing the element
 
     // while root is less than children, bubble down
     int index = 0;
@@ -58,7 +58,6 @@ void Heap::remove() {
         swap(index, lci);
         index = lci;
     }
-
 }
 
 int Heap::leftChildIndex(int index) {
@@ -81,13 +80,14 @@ bool Heap::isValidParent(int index) {
     if (!hasLeftChild(index))
         return true;
 
-    bool isValid = array[index] >= leftChildIndex(index);
+    bool isValid = array[index] >= leftChild(index); // comparing values, not indices
 
     if (!hasRightChild(index))
-        isValid &= array[index] >= rightChildIndex(index);
+        isValid &= array[index] >= rightChild(index); // comparing values, not indices
 
     return isValid;
 }
+
 
 int Heap::largerChildIndex(int index) {
     if (!hasLeftChild(index))
