@@ -27,11 +27,24 @@
 
 using namespace std;
 
+int getKthLargest(int array[], int size, int k) {
+    if (k > size)
+        return -1;
+
+    Heap heap(10);
+    for (int i = 0; i < size; i++)
+        heap.insert(array[i]);
+
+    for (int i = 0; i < k; i++) {
+        heap.remove();
+    }
+    return heap.root();
+}
+
 int main()
 {
-    int array[] = { 5, 3, 8, 4, 1, 2 };
-    Heapify::heapify(array, size(array));
-    for (int n: array)
-        cout << n << endl;
+    int array[] = { 8, 5, 2, 3, 1, 7, 12 };
+    int k = 3;
+    cout << getKthLargest(array, size(array), k);
     return 0;
 }
