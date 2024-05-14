@@ -44,7 +44,7 @@ int getKthLargest(int array[], int size, int k) {
 int main()
 {
     int array[] = { 8, 5, 2, 3, 1, 7, 12 };
-    int k = 3;
+    int k = 4;
     cout << getKthLargest(array, size(array), k);
     return 0;
 }
