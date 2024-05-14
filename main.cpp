@@ -23,24 +23,15 @@
 #include "AVLTree.h"
 #include "Heap.h"
 #include "PriorityQueueWithHeap.h"
+#include "Heapify.h"
 
 using namespace std;
 
 int main()
 {
-    int nums[] = { 1, 5, 2, 7, 3, 4, 12, 9 };
-    Heap heap(10);
-
-    for (int n : nums)
-        heap.insert(n);
-
-    for (int i = size(nums) - 1; i >= 0; i--) {
-        nums[i] = heap.root();
-        heap.remove();
-    }
-
-    for (int& n : nums)
+    int array[] = { 5, 3, 8, 4, 1, 2 };
+    Heapify::heapify(array, size(array));
+    for (int n: array)
         cout << n << endl;
-
     return 0;
 }

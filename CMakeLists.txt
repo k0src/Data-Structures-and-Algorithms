@@ -41,4 +41,6 @@ add_executable(StructuresAlgos main.cpp
         Heap.cpp
         Heap.h
         PriorityQueueWithHeap.cpp
-        PriorityQueueWithHeap.h)
+        PriorityQueueWithHeap.h
+        Heapify.cpp
+        Heapify.h)
