@@ -28,7 +28,7 @@
 using namespace std;
 
 int getKthLargest(int array[], int size, int k) {
-    if (k > size)
+    if (k > size || k < 1)
         return -1;
 
     Heap heap(10);
@@ -44,7 +44,7 @@ int getKthLargest(int array[], int size, int k) {
 int main()
 {
     int array[] = { 8, 5, 2, 3, 1, 7, 12 };
-    int k = 4;
+    int k = 0;
     cout << getKthLargest(array, size(array), k);
     return 0;
 }
