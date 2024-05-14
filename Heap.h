@@ -12,6 +12,7 @@ public:
     void remove();
     bool isEmpty();
     bool isFull();
+    int root();
 private:
     void swap(int first, int second);
     int parent(int index);

@@ -22,6 +22,7 @@
 #include "Tree.h"
 #include "AVLTree.h"
 #include "Heap.h"
+#include "PriorityQueueWithHeap.h"
 
 using namespace std;
 
@@ -33,8 +34,13 @@ int main()
     for (int n : nums)
         heap.insert(n);
 
-    heap.remove();
+    for (int i = size(nums) - 1; i >= 0; i--) {
+        nums[i] = heap.root();
+        heap.remove();
+    }
 
+    for (int& n : nums)
+        cout << n << endl;
 
     return 0;
 }

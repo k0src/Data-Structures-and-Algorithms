@@ -107,3 +107,7 @@ bool Heap::hasLeftChild(int index) {
 bool Heap::hasRightChild(int index) {
     return rightChildIndex(index) <= size;
 }
+
+int Heap::root() {
+    return array[0];
+}

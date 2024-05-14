@@ -39,4 +39,6 @@ add_executable(StructuresAlgos main.cpp
         AVLNode.cpp
         AVLNode.h
         Heap.cpp
-        Heap.h)
+        Heap.h
+        PriorityQueueWithHeap.cpp
+        PriorityQueueWithHeap.h)
