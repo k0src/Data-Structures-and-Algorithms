@@ -1,4 +1,6 @@
 #include "Node.h"
+#include "Trie.h"
+
 
 Node::Node() {
     // Initialize value to 0, and next to nullptr

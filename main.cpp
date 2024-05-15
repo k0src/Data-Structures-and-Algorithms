@@ -24,27 +24,15 @@
 #include "Heap.h"
 #include "PriorityQueueWithHeap.h"
 #include "Heapify.h"
+#include "Trie.h"
 
 using namespace std;
 
-int getKthLargest(int array[], int size, int k) {
-    if (k > size || k < 1)
-        return -1;
-
-    Heap heap(10);
-    for (int i = 0; i < size; i++)
-        heap.insert(array[i]);
-
-    for (int i = 0; i < k; i++) {
-        heap.remove();
-    }
-    return heap.root();
-}
 
 int main()
 {
-    int array[] = { 8, 5, 2, 3, 1, 7, 12 };
-    int k = 0;
-    cout << getKthLargest(array, size(array), k);
+    Trie trie;
+    trie.insert("cat");
+    trie.insert("can");
     return 0;
 }
