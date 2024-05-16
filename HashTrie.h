@@ -9,6 +9,7 @@ public:
     class TrieNode;
     HashTrie();
     void insert(const std::string& word);
+    bool contains(const std::string& word) const;
 private:
     TrieNode* root;
 };
@@ -24,7 +25,7 @@ public:
         }
     }
     char value;
-    bool isEndOfWord;
+    bool isEndOfWord = false;
     std::map<char, TrieNode*> children;
     bool hasChild(char c) {
         return children.find(c) != children.end();

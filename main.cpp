@@ -25,14 +25,15 @@
 #include "PriorityQueueWithHeap.h"
 #include "Heapify.h"
 #include "Trie.h"
+#include "HashTrie.h"
 
 using namespace std;
 
 
 int main()
 {
-    Trie trie;
-    trie.insert("cat");
-    trie.insert("can");
+    HashTrie trie;
+    trie.insert("canada");
+    cout << boolalpha << trie.contains("can");
     return 0;
 }
