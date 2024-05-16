@@ -45,4 +45,6 @@ add_executable(StructuresAlgos main.cpp
         Heapify.cpp
         Heapify.h
         Trie.cpp
-        Trie.h)
+        Trie.h
+        HashTrie.cpp
+        HashTrie.h)
