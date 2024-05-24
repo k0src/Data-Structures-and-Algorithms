@@ -3,6 +3,8 @@
 
 #include <string>
 #include <map>
+#include <iostream>
+#include <vector>
 
 class HashTrie {
 public:
@@ -10,8 +12,12 @@ public:
     HashTrie();
     void insert(const std::string& word);
     bool contains(const std::string& word) const;
+    void traverse();
+    void remove(const std::string& word);
 private:
     TrieNode* root;
+    void traverse(TrieNode* node);
+    void remove(TrieNode* node, const std::string& word, int index);
 };
 
 class HashTrie::TrieNode {
@@ -35,6 +41,24 @@ public:
     }
     TrieNode* getChild(char c) {
         return children[c];
+    }
+    std::vector<TrieNode*> getChildren() {
+        std::vector<TrieNode*> childrenV;
+
+        for (const auto& pair : children) {
+            childrenV.push_back(pair.second);
+        }
+        return childrenV;
+    }
+    bool hasChildren() {
+        return !children.empty();
+    }
+    void removeChild(char c) {
+        auto it = children.find(c);
+        if (it != children.end()) {
+            delete it->second;
+            children.erase(it);
+        }
     }
 };
 

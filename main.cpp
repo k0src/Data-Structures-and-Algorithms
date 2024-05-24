@@ -33,7 +33,10 @@ using namespace std;
 int main()
 {
     HashTrie trie;
-    trie.insert("canada");
-    cout << boolalpha << trie.contains("can");
+    trie.insert("car");
+    trie.insert("care");
+    trie.remove("car");
+    cout << trie.contains("car") << endl;
+    cout << trie.contains("care");
     return 0;
 }
