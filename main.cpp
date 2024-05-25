@@ -26,17 +26,20 @@
 #include "Heapify.h"
 #include "Trie.h"
 #include "HashTrie.h"
+#include "Graph.h"
 
 using namespace std;
 
-
 int main()
 {
-    HashTrie trie;
-    trie.insert("car");
-    trie.insert("care");
-    trie.remove("car");
-    cout << trie.contains("car") << endl;
-    cout << trie.contains("care");
+    Graph graph;
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addEdge("A", "B");
+    graph.addEdge("A", "C");
+    graph.print();
+    graph.removeEdge("A", "C");
+    graph.print();
     return 0;
 }

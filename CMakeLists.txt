@@ -47,4 +47,6 @@ add_executable(StructuresAlgos main.cpp
         Trie.cpp
         Trie.h
         HashTrie.cpp
-        HashTrie.h)
+        HashTrie.h
+        Graph.cpp
+        Graph.h)
