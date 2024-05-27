@@ -6,6 +6,9 @@
 #include <list>
 #include <vector>
 #include <stdexcept>
+#include <set>
+#include <stack>
+#include <queue>
 
 class Graph {
 public:
@@ -18,9 +21,13 @@ public:
     void addEdge(const std::string& from, const std::string& to);
     void removeEdge(const std::string& from, const std::string& to);
     void print();
+    void traverseDepthFirst(const std::string& root);
+    void traverseDepthFirstIterative(const std::string& root);
+    void traverseBreadthFirst(const std::string& root);
 private:
     std::map<std::string, Node*> nodes;
     std::map<Node*, std::list<Node*>*> adjList;
+    void traverseDepthFirst(Node* node, std::set<Node*>* visited);
 };
 
 class Graph::Node {
@@ -33,7 +40,7 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Node& node) {
-        os << node.label;
+        os << node.label << '\n';
         return os;
     }
 
