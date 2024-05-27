@@ -24,10 +24,14 @@ public:
     void traverseDepthFirst(const std::string& root);
     void traverseDepthFirstIterative(const std::string& root);
     void traverseBreadthFirst(const std::string& root);
+    std::vector<std::string> topologicalSort();
+    bool hasCycle();
 private:
     std::map<std::string, Node*> nodes;
     std::map<Node*, std::list<Node*>*> adjList;
     void traverseDepthFirst(Node* node, std::set<Node*>* visited);
+    void topologicalSort(Node* node, std::set<Node*>& visited, std::stack<Node*>& stack);
+    bool hasCycle(Node *node, std::set<Node*>& all, std::set<Node*>& visiting, std::set<Node*>& visited);
 };
 
 class Graph::Node {

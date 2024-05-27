@@ -36,11 +36,9 @@ int main()
     graph.addNode("A");
     graph.addNode("B");
     graph.addNode("C");
-    graph.addNode("D");
     graph.addEdge("A", "B");
-    graph.addEdge("B", "D");
-    graph.addEdge("D", "C");
-    graph.addEdge("A", "C");
-    graph.traverseBreadthFirst("A");
+    graph.addEdge("B", "C");
+    graph.addEdge("C", "A");
+    cout << boolalpha << graph.hasCycle();
     return 0;
 }

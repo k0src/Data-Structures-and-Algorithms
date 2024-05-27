@@ -156,3 +156,71 @@ void Graph::traverseBreadthFirst(const std::string &root) {
                 queue.push(node);
     }
 }
+
+std::vector<std::string> Graph::topologicalSort() {
+    std::set<Node*> visited;
+    std::stack<Node*> stack;
+
+    for (const auto& node : nodes)
+        topologicalSort(node.second, visited, stack);
+
+    std::vector<std::string> sorted;
+
+    while (!stack.empty()) {
+        sorted.push_back(stack.top()->label);
+        stack.pop();
+    }
+    return sorted;
+}
+
+void Graph::topologicalSort(Node* node, std::set<Node*>& visited, std::stack<Node*>& stack) {
+    if (visited.contains(node))
+        return;
+
+    visited.insert(node);
+
+    for (auto n : *adjList[node])
+        topologicalSort(n, visited, stack);
+
+    stack.push(node);
+}
+
+bool Graph::hasCycle() {
+    std::set<Node*> all;
+    std::set<Node*> visiting;
+    std::set<Node*> visited;
+
+    for (const auto& node : nodes)
+        all.insert(node.second);
+
+    while (!all.empty()) {
+        auto current = *all.begin();
+        if (hasCycle(current, all, visiting, visited)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Graph::hasCycle(Node *node, std::set<Node*>& all, std::set<Node*>& visiting, std::set<Node*>& visited) {
+    all.erase(node);
+    visiting.insert(node);
+
+    for (auto n : *adjList[node]) {
+        if (visited.contains(n)) {
+            continue;
+        }
+
+        if (visiting.contains(n)) {
+            return true; // cycle detected
+        }
+
+        if (hasCycle(n, all, visiting, visited)) {
+            return true; // cycle detected in the recursive call
+        }
+    }
+
+    visiting.erase(node);
+    visited.insert(node);
+    return false;
+}
