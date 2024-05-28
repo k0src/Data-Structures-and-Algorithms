@@ -27,18 +27,18 @@
 #include "Trie.h"
 #include "HashTrie.h"
 #include "Graph.h"
+#include "WeightedGraph.h"
 
 using namespace std;
 
 int main()
 {
-    Graph graph;
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addEdge("A", "B");
-    graph.addEdge("B", "C");
-    graph.addEdge("C", "A");
-    cout << boolalpha << graph.hasCycle();
+    WeightedGraph weightedGraph;
+    weightedGraph.addNode("A");
+    weightedGraph.addNode("B");
+    weightedGraph.addNode("C");
+    weightedGraph.addEdge("A", "B", 3);
+    weightedGraph.addEdge("A", "C", 2);
+    weightedGraph.print();
     return 0;
 }
