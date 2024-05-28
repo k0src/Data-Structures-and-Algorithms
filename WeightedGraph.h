@@ -5,6 +5,12 @@
 #include <map>
 #include <list>
 #include <iostream>
+#include <string>
+#include <unordered_map>
+#include <queue>
+#include <climits>
+#include <vector>
+#include <functional>
 
 class WeightedGraph {
 public:
@@ -13,6 +19,8 @@ public:
     void addNode(const std::string& label);
     void addEdge(const std::string& from, const std::string& to, int weight);
     void print();
+    int getShortestDistance(const std::string& startLabel, const std::string& endLabel);
+
 private:
     std::map<std::string, Node*> nodes;
     std::map<Node*, std::list<Edge*>*> adjList;
@@ -43,10 +51,9 @@ public:
     int weight;
 
     friend std::ostream& operator<<(std::ostream& os, const Edge& edge) {
-        os << *edge.from << "->" << *edge.to;
+        os << *edge.from << "->" << *edge.to << " (weight: " << edge.weight << ")";
         return os;
     }
 };
-
 
 #endif

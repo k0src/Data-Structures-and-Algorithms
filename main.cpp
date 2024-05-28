@@ -37,8 +37,10 @@ int main()
     weightedGraph.addNode("A");
     weightedGraph.addNode("B");
     weightedGraph.addNode("C");
+    weightedGraph.addNode("D");
     weightedGraph.addEdge("A", "B", 3);
     weightedGraph.addEdge("A", "C", 2);
-    weightedGraph.print();
+    weightedGraph.addEdge("D", "C", 1);
+    cout << weightedGraph.getShortestDistance("A", "D");
     return 0;
 }

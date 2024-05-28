@@ -43,3 +43,47 @@ void WeightedGraph::print() {
         }
     }
 }
+
+int WeightedGraph::getShortestDistance(const std::string& startLabel, const std::string& endLabel) {
+    Node* startNode = nodes[startLabel];
+    Node* endNode = nodes[endLabel];
+
+    if (!startNode || !endNode) {
+        return -1;
+    }
+
+    std::unordered_map<Node*, int> distances;
+    for (const auto& pair : nodes) {
+        distances[pair.second] = INT_MAX;
+    }
+    distances[startNode] = 0;
+
+    auto compare = [](const std::pair<int, Node*>& left, const std::pair<int, Node*>& right) {
+        return left.first > right.first;
+    };
+    std::priority_queue<std::pair<int, Node*>, std::vector<std::pair<int, Node*>>, decltype(compare)> pq(compare);
+
+    pq.emplace(0, startNode);
+
+    while (!pq.empty()) {
+        int currentDistance = pq.top().first;
+        Node* currentNode = pq.top().second;
+        pq.pop();
+
+        if (currentDistance > distances[currentNode]) {
+            continue;
+        }
+
+        for (Edge* edge : *adjList[currentNode]) {
+            Node* neighbor = edge->to;
+            int newDist = currentDistance + edge->weight;
+
+            if (newDist < distances[neighbor]) {
+                distances[neighbor] = newDist;
+                pq.emplace(newDist, neighbor);
+            }
+        }
+    }
+
+    return distances[endNode] == INT_MAX ? -1 : distances[endNode];
+}
