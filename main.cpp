@@ -31,16 +31,54 @@
 
 using namespace std;
 
+void bubbleSort(vector<int>& array) {
+    for (int i = 0; i < array.size() - 1; i++) {
+        bool isSorted;
+        for (int j = 1; j < array.size() - i; j++) {
+            isSorted = true;
+            if (array[j] < array[j - 1]) {
+                int temp = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = temp;
+                isSorted = false;
+            }
+        }
+        if (isSorted)
+            return;
+    }
+}
+
+void selectionSort(vector<int>& array) {
+    for (int i = 0; i < array.size(); i++) {
+        int minIndex = i;
+        for (int j = i; j < array.size(); j++) {
+            if (array[j] < array[minIndex])
+                minIndex = j;
+        }
+        int temp = array[i];
+        array[i] = array[minIndex];
+        array[minIndex] = temp;
+    }
+}
+
+void insertionSort(vector<int>& array) {
+    for (int i = 1; i < array.size(); i++) {
+        int current = array[i];
+        int j = i - 1;
+
+        while (j >= 0 && array[j] > current) {
+            array[j + 1] = array[j];
+            j--;
+        }
+        array[j + 1] = current;
+    }
+}
+
 int main()
 {
-    WeightedGraph weightedGraph;
-    weightedGraph.addNode("A");
-    weightedGraph.addNode("B");
-    weightedGraph.addNode("C");
-    weightedGraph.addNode("D");
-    weightedGraph.addEdge("A", "B", 3);
-    weightedGraph.addEdge("A", "C", 2);
-    weightedGraph.addEdge("D", "C", 1);
-    cout << weightedGraph.getShortestDistance("A", "D");
+    vector<int> array = { 1, 5, 2, 3, 6, 4, 10 };
+    insertionSort(array);
+    for (int n : array)
+        cout << n << endl;
     return 0;
 }
