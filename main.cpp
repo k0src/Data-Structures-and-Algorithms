@@ -121,12 +121,37 @@ void mergeSort(int array[], int size) {
     delete[] right;
 }
 
+int partition(vector<int>& array, int start, int end) {
+    int pivot = array[end];
+    int boundary = start - 1;
+
+    for (int i = start; i <= end; i++) {
+        if (array[i] <= pivot) {
+            boundary++;
+            swap(array[i], array[boundary]);
+        }
+    }
+    return boundary;
+}
+
+void quickSort(vector<int>& array, int start, int end) {
+    // Base condition
+    if (start >= end)
+        return;
+    // Partition the array
+    int boundary = partition(array, start, end);
+    // Sort left
+    quickSort(array, start, boundary - 1);
+    // Sort right
+    quickSort(array, boundary + 1, end);
+}
+
 int main()
 {
-//    vector<int> array = { 1, 5, 2, 3, 6, 4, 10 };
-    int array[] = { 1, 5, 2, 3, 6, 4, 10 };
-    int size = sizeof(array) / sizeof(array[0]);
-    mergeSort(array, size);
+    vector<int> array = { 1, 5, 2, 3, 6, 4, 10 };
+//    int array[] = { 1, 5, 2, 3, 6, 4, 10 };
+//    int size = sizeof(array) / sizeof(array[0]);
+    quickSort(array, 0, array.size() - 1);
     for (int n : array)
         cout << n << endl;
     return 0;
