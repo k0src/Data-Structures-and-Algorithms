@@ -74,10 +74,59 @@ void insertionSort(vector<int>& array) {
     }
 }
 
+// Function to merge two halves
+void merge(int left[], int leftSize, int right[], int rightSize, int result[]) {
+    int i = 0, j = 0, k = 0;
+
+    while (i < leftSize && j < rightSize) {
+        if (left[i] <= right[j])
+            result[k++] = left[i++];
+        else
+            result[k++] = right[j++];
+    }
+
+    while (i < leftSize)
+        result[k++] = left[i++];
+
+    while (j < rightSize)
+        result[k++] = right[j++];
+}
+
+// Function to implement merge sort
+void mergeSort(int array[], int size) {
+    if (size < 2)
+        return;
+
+    // Divide array in half
+    int middle = size / 2;
+
+    int *left = new int[middle];
+    int *right = new int[size - middle];
+
+    for (int i = 0; i < middle; i++)
+        left[i] = array[i];
+
+    for (int i = middle; i < size; i++)
+        right[i - middle] = array[i];
+
+    // Sort each half
+    mergeSort(left, middle);
+    mergeSort(right, size - middle);
+
+    // Merge
+    merge(left, middle, right, size - middle, array);
+
+    // Free dynamically allocated memory
+    delete[] left;
+    delete[] right;
+}
+
 int main()
 {
-    vector<int> array = { 1, 5, 2, 3, 6, 4, 10 };
-    insertionSort(array);
+//    vector<int> array = { 1, 5, 2, 3, 6, 4, 10 };
+    int array[] = { 1, 5, 2, 3, 6, 4, 10 };
+    int size = sizeof(array) / sizeof(array[0]);
+    mergeSort(array, size);
     for (int n : array)
         cout << n << endl;
     return 0;
