@@ -146,12 +146,27 @@ void quickSort(vector<int>& array, int start, int end) {
     quickSort(array, boundary + 1, end);
 }
 
+void countingSort(vector<int>& array) {
+    int maxNum = *std::max_element(array.begin(), array.end());
+    vector<int> countArray(maxNum + 1, 0);
+
+    for (int n : array)
+        countArray[n]++;
+
+    int k = 0;
+    for (int i = 0; i < countArray.size(); i++) {
+        for (int j = 0; j < countArray[i]; j++) {
+            array[k++] = i;
+        }
+    }
+}
+
 int main()
 {
     vector<int> array = { 1, 5, 2, 3, 6, 4, 10 };
 //    int array[] = { 1, 5, 2, 3, 6, 4, 10 };
 //    int size = sizeof(array) / sizeof(array[0]);
-    quickSort(array, 0, array.size() - 1);
+    countingSort(array);
     for (int n : array)
         cout << n << endl;
     return 0;
