@@ -71,10 +71,30 @@ int binarySearchIterative(const vector<int>& array, int target) {
     return -1;
 }
 
+int ternarySearch(vector<int>& array, int start, int end, int target) {
+    int partitionSize = (end - start) / 3;
+
+    if (start > end)
+        return -1;
+
+    int mid1 = start + partitionSize;
+    int mid2 = end - partitionSize;
+
+    if (array[mid1] == target)
+        return mid1;
+    if (array[mid2] == target)
+        return mid2;
+    if (array[mid1] > target)
+        return ternarySearch(array, start, mid1 - 1, target);
+    if (array[mid2] < target)
+        return ternarySearch(array, mid2 + 1, end, target);
+    return ternarySearch(array, mid1 + 1, mid2 - 1, target);
+}
+
 int main()
 {
     vector<int> array = { 1, 2, 3, 5, 6, 10, 12, 23, 34 };
     int target = 10;
-    cout << binarySearchIterative(array, target);
+    cout << ternarySearch(array, 0, array.size() - 1, target);
     return 0;
 }
