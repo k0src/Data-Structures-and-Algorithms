@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "Array.h"
 #include <vector>
 #include <list>
@@ -91,10 +92,28 @@ int ternarySearch(vector<int>& array, int start, int end, int target) {
     return ternarySearch(array, mid1 + 1, mid2 - 1, target);
 }
 
+int jumpSearch(vector<int>& array, int target) {
+    int blockSize = (int) sqrt(array.size());
+    int start = 0, next = blockSize;
+
+    while (start < array.size() && array[next - 1] < target) {
+        start = next;
+
+        next += blockSize;
+        if (next > array.size()) next = array.size();
+    }
+
+    for (int i = start; i < next; i++) {
+        if (array[i] == target)
+            return  i;
+    }
+    return -1;
+}
+
 int main()
 {
     vector<int> array = { 1, 2, 3, 5, 6, 10, 12, 23, 34 };
     int target = 10;
-    cout << ternarySearch(array, 0, array.size() - 1, target);
+    cout << jumpSearch(array, target);
     return 0;
 }
