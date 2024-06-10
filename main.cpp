@@ -110,10 +110,21 @@ int jumpSearch(vector<int>& array, int target) {
     return -1;
 }
 
+int exponentialSearch(vector<int>& array, int target) {
+    int bound = 1;
+    while (bound < array.size() && array[bound] < target)
+        bound *= 2;
+
+    int start = bound / 2;
+    int end = std::min(bound, (int) array.size() - 1);
+
+    return binarySearchRecursive(array, start, end, target);
+}
+
 int main()
 {
     vector<int> array = { 1, 2, 3, 5, 6, 10, 12, 23, 34 };
     int target = 10;
-    cout << jumpSearch(array, target);
+    cout << exponentialSearch(array, target);
     return 0;
 }
