@@ -31,8 +31,50 @@
 
 using namespace std;
 
+int linearSearch(const vector<int>& array, int target) {
+    for (int i = 0; i < array.size(); i++)
+        if (array[i] == target)
+            return i;
+    return -1;
+}
+
+int binarySearchRecursive(const vector<int>& array, int start, int end, int target) {
+    if (end >= start) {
+        int mid = (end + start) / 2;
+
+        if (array[mid] == target)
+            return mid;
+        else if (array[mid] > target)
+            return binarySearchRecursive(array, start, mid - 1, target);
+        else
+            return binarySearchRecursive(array, mid + 1, end, target);
+    }
+    else {
+        return -1;
+    }
+}
+
+int binarySearchIterative(const vector<int>& array, int target) {
+    int start = 0, end = array.size() - 1;
+
+    while (end >= start) {
+        int mid = (end + start) / 2;
+
+        if (array[mid] == target) {
+            return mid;
+        }
+        else if (array[mid] > target)
+            end = mid - 1;
+        else
+            start = mid + 1;
+    }
+    return -1;
+}
+
 int main()
 {
-    vector<int> array = { 1, 5, 2, 3, 6, 4, 10 };
+    vector<int> array = { 1, 2, 3, 5, 6, 10, 12, 23, 34 };
+    int target = 10;
+    cout << binarySearchIterative(array, target);
     return 0;
 }
