@@ -53,4 +53,6 @@ add_executable(StructuresAlgos main.cpp
         WeightedGraph.cpp
         WeightedGraph.h
         Sorter.cpp
-        Sorter.h)
+        Sorter.h
+        Searcher.cpp
+        Searcher.h)
