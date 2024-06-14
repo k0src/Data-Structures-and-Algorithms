@@ -168,8 +168,45 @@ std::string reformat(const std::string &sentence) {
     return join(words, " ");
 }
 
+bool isAnagram(string str1, string str2) {
+    if (str1.length() != str2.length())
+        return false;
+
+    sort(str1.begin(), str1.end());
+    sort(str2.begin(), str2.end());
+    return (str1 == str2);
+}
+
+bool isAnagram2(string str1, string str2) {
+    if (str1.length() != str2.length())
+        return false;
+
+    const int ENGLISH_ALPHABET = 26;
+    int freq[ENGLISH_ALPHABET];
+
+    for (char& c : str1) {
+        c = tolower(c);
+    }
+
+    for (char& c : str2) {
+        c = tolower(c);
+    }
+
+    for (int i = 0; i < str1.length(); i++)
+        freq[str1[i] - 'a']++;
+
+    for (int i = 0; i < str2.length(); i++) {
+        int index = str2[i] - 'a';
+        if (freq[index] == 0)
+            return false;
+
+        freq[index]--;
+    }
+    return true;
+}
+
 int main()
 {
-    cout << reformat("     trees     are    awesome");
+    cout << boolalpha << isAnagram2("abcd", "adbc");
     return 0;
 }
