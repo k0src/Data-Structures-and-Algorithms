@@ -5,6 +5,7 @@
 #include <list>
 #include <algorithm>
 #include "Node.h"
+#include <unordered_set>
 #include "LinkedList.h"
 #include <stack>
 #include "StringReverser.h"
@@ -79,8 +80,49 @@ string reverseWords(const string& str) {
     return result;
 }
 
+bool isRotation(const string& str1, const string& str2) {
+    if (str1.length() != str2.length())
+        return false;
+
+    string temp = str1 + str2;
+    if (!(search(temp.begin(), temp.end(), str2.begin(), str2.end()) != temp.end()))
+        return false;
+
+    return true;
+}
+
+string removeDuplicates(const string& str) {
+    set<char> chars;
+    string res;
+
+    for (char c : str) {
+        if (!chars.contains(c)) {
+            chars.insert(c);
+            res.push_back(c);
+        }
+    }
+    return res;
+}
+
+char mostRepeated(const string& str) {
+    map<char, int> chars;
+    char res;
+    int freq = 0;
+
+    for (char c : str)
+        chars[c]++;
+
+    for (auto p : chars) {
+        if (p.second > freq) {
+            freq = p.second;
+            res = p.first;
+        }
+    }
+    return res;
+}
+
 int main()
 {
-    cout << reverseWords("hello world this is a string");
+    cout << mostRepeated("Helloooo!!");
     return 0;
 }
