@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <sstream>
 #include "Array.h"
 #include <vector>
 #include <list>
@@ -121,8 +122,54 @@ char mostRepeated(const string& str) {
     return res;
 }
 
+// Function to trim leading and trailing spaces
+std::string trim(const std::string &str) {
+    size_t first = str.find_first_not_of(' ');
+    if (first == std::string::npos) return ""; // no content
+    size_t last = str.find_last_not_of(' ');
+    return str.substr(first, (last - first + 1));
+}
+
+// Function to split a string by spaces
+std::vector<std::string> split(const std::string &str) {
+    std::istringstream iss(str);
+    std::vector<std::string> words;
+    std::string word;
+    while (iss >> word) {
+        words.push_back(word);
+    }
+    return words;
+}
+
+// Function to join a vector of strings with a delimiter
+std::string join(const std::vector<std::string> &words, const std::string &delimiter) {
+    std::ostringstream oss;
+    for (size_t i = 0; i < words.size(); ++i) {
+        if (i != 0)
+            oss << delimiter;
+        oss << words[i];
+    }
+    return oss.str();
+}
+
+// Function to capitalize each word in a sentence
+std::string reformat(const std::string &sentence) {
+    if (sentence.empty() || trim(sentence).empty()) {
+        return "";
+    }
+
+    std::string trimmedSentence = trim(sentence);
+    std::vector<std::string> words = split(trimmedSentence);
+
+    for (auto &word : words) {
+        std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+        word[0] = std::toupper(word[0]);
+    }
+    return join(words, " ");
+}
+
 int main()
 {
-    cout << mostRepeated("Helloooo!!");
+    cout << reformat("     trees     are    awesome");
     return 0;
 }
