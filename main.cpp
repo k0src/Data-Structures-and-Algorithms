@@ -205,8 +205,35 @@ bool isAnagram2(string str1, string str2) {
     return true;
 }
 
+bool isPalindrome(const string& str) {
+    string rev = str;
+    reverse(rev.begin(), rev.end());
+    return str == rev;
+}
+
+bool isPalindrome2(const string& str) {
+    int start = 0, end = str.length() - 1;
+
+    while (end > start)
+        if (str[start++] != str[end--])
+            return false;
+
+    return true;
+}
+
+bool isPalindrome3(const string& str, int start, int end) {
+    if (start >= end) {
+        return true;
+    }
+    if (str[start] != str[end]) {
+        return false;
+    }
+
+    return isPalindrome3(str, start + 1, end - 1);
+}
+
 int main()
 {
-    cout << boolalpha << isAnagram2("abcd", "adbc");
+    cout << boolalpha << isPalindrome3("racecar", 0, 6);
     return 0;
 }
